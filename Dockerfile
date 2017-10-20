@@ -9,3 +9,4 @@ RUN conda install keras
 RUN conda install boto3
 RUN conda install git
 
+ENV PATH="/home/docs/docker_related/env:${PATH}"
