@@ -1,6 +1,6 @@
 FROM nvidia/cuda:8.0-cudnn6-runtime-ubuntu16.04
 
-MAINTAINER Ravi Kiran Kummamuru <rkummamu@gmail.com>
+MAINTAINER Ravi Kiran Kummamuru <ravikiran.kummamuru@zemosolabs.com>
 
 ARG ANACONDA_VERSION=5.0.0.1
 ARG TENSORFLOW_VERSION=1.3.0
