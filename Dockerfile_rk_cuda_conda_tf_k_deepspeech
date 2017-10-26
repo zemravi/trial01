@@ -16,7 +16,7 @@ WORKDIR /tmp
 # Download anaconda and install
 RUN apt-get update && apt-get install -y wget build-essential libssl-dev 
 RUN apt-get install -y lsb-release
-RUN wget http://repo.continuum.io/archive/Anaconda2-${ANACONDA_VERSION}-Linux-x86_64.sh -P 
+RUN wget http://repo.continuum.io/archive/Anaconda2-${ANACONDA_VERSION}-Linux-x86_64.sh
 RUN bash Anaconda2-${ANACONDA_VERSION}-Linux-x86_64.sh -b -p $ANACONDA_DIR
 RUN rm Anaconda2-${ANACONDA_VERSION}-Linux-x86_64.sh
 RUN conda install git
