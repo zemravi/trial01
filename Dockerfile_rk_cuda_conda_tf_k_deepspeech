@@ -69,7 +69,8 @@ RUN wget https://index.taskcluster.net/v1/task/project.deepspeech.deepspeech.nat
         && tar -xJvf native_client.tar.xz \
         && cp -r *.so /docsaws/projects/DeepSpeech/native_client/
 
-RUN PATH="/docsaws/projects/DeepSpeech/native_client/:$PATH"
-RUN export LD_LIBRARY_PATH PATH
+#ENV PATH="/docsaws/projects/DeepSpeech/native_client/:$PATH"
+#ENV export LD_LIBRARY_PATH PATH
+ENV LD_LIBRARY_PATH /docsaws/projects/DeepSpeech/native_client:${LD_LIBRARY_PATH}
 
 WORKDIR DeepSpeech
