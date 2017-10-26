@@ -41,8 +41,7 @@ RUN pip install --upgrade pip \
 #	https://index.taskcluster.net/v1/task/project.deepspeech.tensorflow.pip.master.gpu/artifacts/public/tensorflow_gpu_warpctc-1.3.0rc0-cp27-cp27mu-linux_x86_64.whl \
       pyxdg \
       python_speech_features \
-      sox \
-      pandas
+      sox
 
 # Install keras
 RUN pip install keras==${KERAS_VERSION}
@@ -50,16 +49,14 @@ RUN pip install keras==${KERAS_VERSION}
 # Install cloud tools: AWS
 RUN pip install awscli
 
-WORKDIR /docsaws/projects/
+WORKDIR /home/docsaws/projects/
 RUN git clone https://github.com/mozilla/DeepSpeech \
    && cd DeepSpeech \
    && pip install progressbar2 \
 	python-utils \
 	paramiko \
 	pysftp \
-	sox \
 	python_speech_features \
-	pyxdg \
 	bs4 \
 	six 
 RUN conda install scipy=0.19.1
@@ -67,10 +64,10 @@ RUN conda install scipy=0.19.1
 RUN wget https://index.taskcluster.net/v1/task/project.deepspeech.deepspeech.native_client.master.cpu/artifacts/public/native_client.tar.xz -P /tmp \
         && cd /tmp \
         && tar -xJvf native_client.tar.xz \
-        && cp -r *.so /docsaws/projects/DeepSpeech/native_client/
+        && cp -r *.so /home/docsaws/projects/DeepSpeech/native_client/
 
-#ENV PATH="/docsaws/projects/DeepSpeech/native_client/:$PATH"
+#ENV PATH="/home/docsaws/projects/DeepSpeech/native_client/:$PATH"
 #ENV export LD_LIBRARY_PATH PATH
-ENV LD_LIBRARY_PATH /docsaws/projects/DeepSpeech/native_client:${LD_LIBRARY_PATH}
+ENV LD_LIBRARY_PATH /home/docsaws/projects/DeepSpeech/native_client:${LD_LIBRARY_PATH}
 
 WORKDIR DeepSpeech
