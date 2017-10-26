@@ -65,7 +65,9 @@ RUN wget https://index.taskcluster.net/v1/task/project.deepspeech.deepspeech.nat
         && cd /tmp \
         && tar -xJvf native_client.tar.xz \
         && cp -r *.so /home/docsdocker/projects/DeepSpeech/native_client/
-	&& pip install https://index.taskcluster.net/v1/task/project.deepspeech.deepspeech.native_client.master.cpu/artifacts/public/deepspeech-0.0.1-cp27-cp27mu-linux_x86_64.whl
+
+RUN pip install https://index.taskcluster.net/v1/task/project.deepspeech.deepspeech.native_client.master.cpu/artifacts/public/deepspeech-0.0.1-cp27-cp27mu-linux_x86_64.whl
+
 
 ENV LD_LIBRARY_PATH /home/docsdocker/projects/DeepSpeech/native_client:${LD_LIBRARY_PATH}
 
