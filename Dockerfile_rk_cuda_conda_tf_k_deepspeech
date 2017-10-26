@@ -14,7 +14,7 @@ ENV GIT_LFS_VER=2.1.1
 
 # Download anaconda and install it
 RUN apt-get update && apt-get install -y wget build-essential libssl-dev 
-RUN apt-get install lsb-release
+RUN apt-get install -y lsb-release
 RUN wget http://repo.continuum.io/archive/Anaconda2-${ANACONDA_VERSION}-Linux-x86_64.sh -P /tmp
 RUN bash /tmp/Anaconda2-${ANACONDA_VERSION}-Linux-x86_64.sh -b -p $ANACONDA_DIR
 RUN rm /tmp/Anaconda2-${ANACONDA_VERSION}-Linux-x86_64.sh
