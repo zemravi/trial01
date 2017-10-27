@@ -33,11 +33,7 @@ RUN curl -L https://github.com/git-lfs/git-lfs/releases/download/v$GIT_LFS_VER/g
 ## Install all the python packages
 RUN pip install --upgrade pip \
    && pip install --upgrade \
-      setuptools \
-   && pip install --upgrade \
-      pyxdg \
-      python_speech_features \
-      sox
+      setuptools 
 
 # Install keras
 RUN pip install keras==${KERAS_VERSION}
@@ -48,12 +44,14 @@ RUN pip install awscli
 WORKDIR /home/docsdocker/projects/
 RUN git clone https://github.com/mozilla/DeepSpeech \
    && cd DeepSpeech \
-   && pip install progressbar2 \
+   && pip install --upgrade progressbar2 \
 	python-utils \
 	paramiko \
 	pysftp \
 	python_speech_features \
+        pyxdg \
 	bs4 \
+        sox \
 	six 
 RUN conda install scipy=0.19.1
 
